@@ -1,0 +1,21 @@
+vlib work
+vlog  RAM.v SPI.v  SPI_SLAVE_WITH_SINGLE_PORT_RAM.v SPI_SLAVE_WITH_SINGLE_PORT_RAM_tb.v 
+vsim -voptargs=+acc work.SPI_SLAVE_WITH_SINGLE_PORT_RAM_tb
+add wave *
+add wave -position insertpoint  \
+sim:/SPI_SLAVE_WITH_SINGLE_PORT_RAM_tb/DUT_SPI_SLAVE/rx_data \
+sim:/SPI_SLAVE_WITH_SINGLE_PORT_RAM_tb/DUT_SPI_SLAVE/rx_valid \
+sim:/SPI_SLAVE_WITH_SINGLE_PORT_RAM_tb/DUT_SPI_SLAVE/tx_valid \
+sim:/SPI_SLAVE_WITH_SINGLE_PORT_RAM_tb/DUT_SPI_SLAVE/tx_data
+add wave -position insertpoint  \
+sim:/SPI_SLAVE_WITH_SINGLE_PORT_RAM_tb/DUT_SPI_SLAVE/INS_RAM/dout \
+sim:/SPI_SLAVE_WITH_SINGLE_PORT_RAM_tb/DUT_SPI_SLAVE/INS_RAM/internal_WA \
+sim:/SPI_SLAVE_WITH_SINGLE_PORT_RAM_tb/DUT_SPI_SLAVE/INS_RAM/internal_RA \
+sim:/SPI_SLAVE_WITH_SINGLE_PORT_RAM_tb/DUT_SPI_SLAVE/INS_RAM/ram
+add wave -position insertpoint  \
+sim:/SPI_SLAVE_WITH_SINGLE_PORT_RAM_tb/DUT_SPI_SLAVE/INS_SPI/transmition_read \
+sim:/SPI_SLAVE_WITH_SINGLE_PORT_RAM_tb/DUT_SPI_SLAVE/INS_SPI/counter \
+sim:/SPI_SLAVE_WITH_SINGLE_PORT_RAM_tb/DUT_SPI_SLAVE/INS_SPI/cs \
+sim:/SPI_SLAVE_WITH_SINGLE_PORT_RAM_tb/DUT_SPI_SLAVE/INS_SPI/ns
+run -all
+#quit -sim
